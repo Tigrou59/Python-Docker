@@ -107,11 +107,12 @@ docker-compose run slim-python
 root@jma-VirtualBox:~/docker_lab/python-docker/compose#
 
 docker-compose run slim-python
-Creating network "compose_default" with the default driver
-Creating volume "compose_PythonVol" with default driver
-Python 3.7.2 (default, Feb 13 2019, 10:47:41)
-[GCC 6.3.0 20170516] on linux
-Type "help", "copyright", "credits" or "license" for more information.
+
+    Creating network "compose_default" with the default driver
+    Creating volume "compose_PythonVol" with default driver
+    Python 3.7.2 (default, Feb 13 2019, 10:47:41)
+    [GCC 6.3.0 20170516] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
 
     >>>
     CTRL+d
