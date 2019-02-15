@@ -1,6 +1,6 @@
-**A quickly Python's environement with Docker for Dev and test under Linux (a lot of versions Python of images Docker for are available)**
+**A quickly Python's environement with Docker for Dev and Test under Linux (a lot of versions Python of images Docker for are available)**
 
-**Install Docker CE on Linux Ubuntu**
+**Install Docker CE on Linux "Ubuntu"**
 https://docs.docker.com/install/linux/docker-ce/ubuntu/
 
 sudo apt-get update && apt-get install docker-ce docker-ce-cli containerd.io
@@ -24,11 +24,13 @@ Docker version 18.06.1-ce, build e68fc7a
 root@jma-VirtualBox:~/docker_lab/python-docker# docker-compose --version
 docker-compose version 1.17.1, build unknown
 
-     Create a Dockerfile from the repo GitHub :
-https://github.com/docker-library/python/blob/3189e185470f8abd8957c78973cda6b2413ca0fe/3.7/stretch/slim/Dockerfile
+**Create a Dockerfile from the repo GitHub :**
+
+curl -L
+https://github.com/docker-library/python/blob/3189e185470f8abd8957c78973cda6b2413ca0fe/3.7/stretch/slim/Dockerfile > Dockerfile
 
 **Build an image named Python slim 3.7 from a Dockerfile**
-*The build's context is set where is the file Dockerfile crteated above*
+*The build's context is set where is the file Dockerfile created above*
 
 docker image build -t slim/python:3.7 .
 
@@ -48,11 +50,12 @@ Successfully tagged slim/python:3.7
 
 **List the Docker images created with the cbuild command**
 root@jma-VirtualBox:~/docker_lab/python-docker#
+
  docker image ls
 
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-slim/python         3.7                 717c4c493d2f        2 minutes ago       143MB
-debian              stretch-slim        9a4a82cec2d2        7 days ago          55.3MB
+    REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+    slim/python         3.7                 717c4c493d2f        2 minutes ago       143MB
+    debian              stretch-slim        9a4a82cec2d2        7 days ago          55.3MB
 
 #Now we can run a container named "my_python" on the image named "slim-python:3.7"
 
@@ -67,32 +70,35 @@ docker container run -it --rm --name my-python -v "$PWD":/usr/src/myapp -w /usr/
 Python 3.7.2 (default, Feb 13 2019, 10:47:41)
 [GCC 6.3.0 20170516] on linux
 Type "help", "copyright", "credits" or "license" for more information.
->>> a, b, c = 1, 1, 1    # a et b servent au calcul des termes successifs, c est un simple compteur
->>> while c<15:
-...     print(b, end=' ')
-...     a, b, c = b, a+b, c+1
-...
-1 2 3 5 8 13 21 34 55 89 144 233 377 610
 
-    The best way is to use Docker Compose for create a service Python 3.7
+    >>> a, b, c = 1, 1, 1    # a et b servent au calcul des termes successifs, c est un simple compteur
+    >>> while c<15:
+    ...     print(b, end=' ')
+    ...     a, b, c = b, a+b, c+1
+    ...
+    1 2 3 5 8 13 21 34 55 89 144 233 377 610
+
+The best way is to use Docker Compose for create a service Python 3.7
+
 mkdir compose
+
 cd compose
 
 vi docker-compose.yml
 
-version: '3'
-services:
-  slim-python:
-    image: slim/python:3.7
-    container_name: python-37
-    working_dir: /usr/src/myapp
-    stdin_open: true
-    tty: true
-    command: python3
+    version: '3'
+    services:
+      slim-python:
+        image: slim/python:3.7
+        container_name: python-37
+        working_dir: /usr/src/myapp
+        stdin_open: true
+        tty: true
+        command: python3
+        volumes:
+          - PythonVol:/usr/src/myapp
     volumes:
-      - PythonVol:/usr/src/myapp
-volumes:
-  PythonVol:
+      PythonVol:
 
 #We have added some option related with the interactive mode, we run the service directly, not in background >> (docker-compose up -d)
 #but simply with the run option on the compose service
@@ -106,22 +112,23 @@ Creating volume "compose_PythonVol" with default driver
 Python 3.7.2 (default, Feb 13 2019, 10:47:41)
 [GCC 6.3.0 20170516] on linux
 Type "help", "copyright", "credits" or "license" for more information.
->>>
-CTRL+d
+
+    >>>
+    CTRL+d
 
 #Verifiing the compose's service
 docker-compose ps
 
-Name   Command   State   Ports
------------------------------------
-python-37   python3   Up    
+    Name   Command   State   Ports
+    -----------------------------------
+    python-37   python3   Up    
 
 #Now, we can easily use a Docker'command and we can list, inspect the mount point or delete the binding volume Docker
 root@jma-VirtualBox:~/docker_lab/python-docker/compose#
 
-docker volume ls
-DRIVER              VOLUME NAME
-local               compose_PythonVol
+    docker volume ls
+    DRIVER              VOLUME NAME
+    local               compose_PythonVol
 
 docker volume inspect -f '{{.Mountpoint}}' compose_PythonVol
 /var/lib/docker/volumes/compose_PythonVol/_data
