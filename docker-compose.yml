@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  slim-python:
+    image: slim/python:3.7
+    container_name: python-37
+    working_dir: /usr/src/myapp
+    stdin_open: true
+    tty: true
+    command: python3
+    volumes:
+      - PythonVol:/usr/src/myapp
+volumes:
+  PythonVol:
+    
