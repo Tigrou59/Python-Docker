@@ -71,7 +71,7 @@ Python 3.7.2 (default, Feb 13 2019, 10:47:41)
 [GCC 6.3.0 20170516] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 
-    >>> a, b, c = 1, 1, 1    # a et b servent au calcul des termes successifs, c est un simple compteur
+    >>> a, b, c = 1, 1, 1    # fibonacci : a et b servent au calcul des termes successifs, c est un simple compteur
     >>> while c<15:
     ...     print(b, end=' ')
     ...     a, b, c = b, a+b, c+1
