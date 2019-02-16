@@ -86,7 +86,7 @@ cd compose
 
 vi docker-compose.yml
 
-    version: '3'
+    version: '3.7'
     services:
       slim-python:
         image: slim/python:3.7

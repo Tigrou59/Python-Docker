@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.7'
 services:
   slim-python:
     image: slim/python:3.7
@@ -11,4 +11,3 @@ services:
       - PythonVol:/usr/src/myapp
 volumes:
   PythonVol:
-    
