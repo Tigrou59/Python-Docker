@@ -24,7 +24,7 @@ docker --version
 
  docker-compose --version
 
-    docker-compose version 1.17.1, build unknown
+    docker-compose version 1.23.2, build 1110ad01
 
 **Create a local Dockerfile from the repo GitHub :**
 
