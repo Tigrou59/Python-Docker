@@ -18,11 +18,13 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 **Verify version for Docker & Docker Composer**
 
-root@jma-VirtualBox:~/docker_lab/python-docker# docker --version
-Docker version 18.06.1-ce, build e68fc7a
+docker --version
 
-root@jma-VirtualBox:~/docker_lab/python-docker# docker-compose --version
-docker-compose version 1.17.1, build unknown
+    Docker version 18.06.1-ce, build e68fc7a
+
+ docker-compose --version
+
+    docker-compose version 1.17.1, build unknown
 
 **Create a Dockerfile from the repo GitHub :**
 
@@ -49,7 +51,6 @@ Successfully built 717c4c493d2f
 Successfully tagged slim/python:3.7
 
 **List the Docker images created with the cbuild command**
-root@jma-VirtualBox:~/docker_lab/python-docker#
 
  docker image ls
 
@@ -102,9 +103,6 @@ vi docker-compose.yml
 
 #We have added some option related with the interactive mode, we run the service directly, not in background >> (docker-compose up -d)
 #but simply with the run option on the compose service
-docker-compose run slim-python
-
-root@jma-VirtualBox:~/docker_lab/python-docker/compose#
 
 docker-compose run slim-python
 
@@ -118,6 +116,7 @@ docker-compose run slim-python
     CTRL+d
 
 #Verifiing the compose's service
+
 docker-compose ps
 
     Name   Command   State   Ports
@@ -125,11 +124,12 @@ docker-compose ps
     python-37   python3   Up    
 
 #Now, we can easily use a Docker'command and we can list, inspect the mount point or delete the binding volume Docker
-root@jma-VirtualBox:~/docker_lab/python-docker/compose#
 
-    docker volume ls
+docker volume ls
+
     DRIVER              VOLUME NAME
     local               compose_PythonVol
 
 docker volume inspect -f '{{.Mountpoint}}' compose_PythonVol
-/var/lib/docker/volumes/compose_PythonVol/_data
+
+      /var/lib/docker/volumes/compose_PythonVol/_data
