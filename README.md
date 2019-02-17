@@ -132,3 +132,22 @@ docker volume ls
 docker volume inspect -f '{{.Mountpoint}}' compose_PythonVol
 
       /var/lib/docker/volumes/compose_PythonVol/_data
+
+#Testing the persistant data with a file "fibonacci.py"
+
+cp fibonacci.py /var/lib/docker/volumes/compose_PythonVol/_data/
+
+#Run the service Docker "slim-python" then execute the file "fibonacci.py" with the exec command under the prompt Python >>>
+
+docker-compose run slim-python
+
+    >>> exec(open("fibonacci.py").read())
+
+    1 2 3 5 8 13 21 34 55 89 144 233 377 610
+
+#For keep the persistant datas under the Docker volume, kepp in mind that we must down the service with the command below (without the option -v, else this would delete the named volume)
+
+docker-compose down
+
+    Removing compose_slim-python_run_22082e300e08 ... done
+    Removing network compose_default
