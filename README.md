@@ -26,7 +26,7 @@ docker --version
 
     docker-compose version 1.23.2, build 1110ad01
 
-**Create a local Dockerfile from the repo GitHub :***
+**Create a local Dockerfile from the repo GitHub :**
 
     curl -LO https://raw.githubusercontent.com/docker-library/python/3189e185470f8abd8957c78973cda6b2413ca0fe/3.7/stretch/slim/Dockerfile
 
