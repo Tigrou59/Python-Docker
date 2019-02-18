@@ -101,6 +101,7 @@ vi docker-compose.yml
       PythonVol:
 
 #We have added some option related with the interactive mode, we run the service directly, not in background >> (docker-compose up -d)
+
 #but simply with the run option on the service
 
 docker-compose run slim-python
