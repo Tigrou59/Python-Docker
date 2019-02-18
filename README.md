@@ -145,7 +145,7 @@ docker-compose run slim-python
 
     1 2 3 5 8 13 21 34 55 89 144 233 377 610
 
-#For keep the persistant datas under the Docker volume, kepp in mind that we must down the service with the command below (without the option -v, else this would delete the named volume)
+#For keep the persistant datas under the Docker volume, keep in mind that we must down the service with the command below (without the option -v, else this would delete the named volume)
 
 docker-compose down
 
