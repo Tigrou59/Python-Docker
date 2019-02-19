@@ -49,6 +49,7 @@ docker --version
 docker image build -t slim/python:3.7 .
 
 *A little screen showing the end of the image's build...*
+
     + pip --version
     pip 19.0.2 from /usr/local/lib/python3.7/site-packages/pip (python 3.7)
     + find /usr/local -depth ( ( -type d -a ( -name test -o -name tests ) ) -o ( -type f -a ( -name *.pyc -o -name *.pyo ) ) ) -exec rm -rf {} +
@@ -166,10 +167,21 @@ docker-compose down
 
 > Now we can verify that the datas "in our case, the file fibonacci.py" is always present under the volume Docker
 
-*I list only the directory inspected above with the command "docker volume inspect"
+*I list only the directory inspected above with the command "docker volume inspect"*
 
     ll `docker volume inspect -f {{'.Mountpoint'}} compose_PythonVol`
     total 12
     drwxr-xr-x 2 root root 4096 févr. 17 22:03 ./
     drwxr-xr-x 3 root root 4096 févr. 17 21:53 ../
     -rwxr-xr-x 1 root root  158 févr. 17 22:03 fibonacci.py*
+
+> Datas are always present under the volume Docker even the service is deleted
+
+docker-compose ps
+
+    Name   Command   State   Ports
+    ------------------------------
+
+docker container ls -a
+
+    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
