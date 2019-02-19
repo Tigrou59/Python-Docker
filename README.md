@@ -2,7 +2,11 @@
 
 **Make a quickly Python's environment with Docker for Developping and Testing under Linux**
 
-*A lot of images and versions for Python are available :*
+**Advantage :**
+
+> You don't need to use binaries for install your new virtual environment Python, any images and versions for Python are available under GitHub.  
+
+> Create or delete a new virtual envirnment with Docker is really very quickly to do...
 
 https://hub.docker.com/_/python/
 
@@ -70,7 +74,7 @@ docker image build -t slim/python:3.7 .
 
 docker container run -it --rm --name my-python slim/python:3.7
 
-*For to keep data persistent, we will use a volume Docker mounted on the host and a specific workdir in the container*
+> For to keep data persistent, we will use a volume Docker mounted on the host and a specific workdir in the container*
 
 docker container run -it --rm --name my-python -v "$PWD":/usr/src/myapp -w /usr/src/myapp slim/python:3.7
 
@@ -109,7 +113,7 @@ vi docker-compose.yml
     volumes:
       PythonVol:
 
-*We have added some option related with the interactive mode and a named volume for hold the datas persistants, we run the service directly, not in background >> (docker-compose up -d), but simply with the run option on the service*
+> We have added some option related with the interactive mode and a named volume for hold the datas persistants, we run the service directly, not in background >> (docker-compose up -d), but simply with the run option on the service
 
 docker-compose run slim-python
 
@@ -130,7 +134,7 @@ docker-compose ps
     -----------------------------------
     python-37   python3   Up    
 
-*With a named volume, we can easily use a Docker command for inspect the mount point or any other action on this volume*
+> With a named volume, we can easily use a Docker command for inspect the mount point or any other action on this volume
 
 docker volume ls
 
@@ -141,11 +145,11 @@ docker volume inspect -f '{{.Mountpoint}}' compose_PythonVol
 
       /var/lib/docker/volumes/compose_PythonVol/_data
 
-*Testing the persistant data with a file "fibonacci.py"*
+> Testing the persistant data with a file "fibonacci.py"
 
 cp fibonacci.py /var/lib/docker/volumes/compose_PythonVol/_data/
 
-*Run the service Docker "slim-python" then execute the file "fibonacci.py" with the exec command under the prompt Python >>>*
+> Run the service Docker "slim-python" then execute the file "fibonacci.py" with the exec command under the prompt Python >>>
 
 docker-compose run slim-python
 
@@ -153,9 +157,19 @@ docker-compose run slim-python
 
     1 2 3 5 8 13 21 34 55 89 144 233 377 610
 
-*For keep the persistant datas under the Docker volume, keep in mind that we must down the service with the command below (without the option -v, else this would delete the named volume)*
+> For keep the persistant datas under the Docker volume, keep in mind that we must down the service with the command below (without the option -v, else this would delete the named volume)
 
 docker-compose down
 
     Removing compose_slim-python_run_22082e300e08 ... done
     Removing network compose_default
+
+> Now we can verify that the datas "in our case, the file fibonacci.py" is always present under the volume Docker
+
+*I list only the directory inspected above with the command "docker volume inspect"
+
+    ll `docker volume inspect -f {{'.Mountpoint'}} compose_PythonVol`
+    total 12
+    drwxr-xr-x 2 root root 4096 févr. 17 22:03 ./
+    drwxr-xr-x 3 root root 4096 févr. 17 21:53 ../
+    -rwxr-xr-x 1 root root  158 févr. 17 22:03 fibonacci.py*
