@@ -186,7 +186,7 @@ docker container ls -a
 
 **For completing our use case with "Docker Compose for create a service Python 3.7"**
 
-> Now, for completed our use case, We can restart the service Docker with command :
+> We can restart the service Docker with the command :
 
 docker-compose run slim-python
 
