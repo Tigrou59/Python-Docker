@@ -171,6 +171,8 @@ docker-compose down
 
 ll $(docker volume inspect -f {{'.Mountpoint'}} compose_PythonVol)
 
+    -rwxr-xr-x 1 root root  158 févr. 17 22:03 fibonacci.py*
+
 > Datas are always present under the volume Docker even the service is deleted
 
 docker-compose ps
