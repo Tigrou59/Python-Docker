@@ -6,7 +6,7 @@
 
 > You don't need to use binaries for install your new virtual environment Python, any images and versions for Python are available under GitHub.  
 
-> Create or delete a new virtual envirnment with Docker is really very quickly to do...
+> Create or delete a new virtual environment with Docker is really very quickly to do...
 
 https://hub.docker.com/_/python/
 
