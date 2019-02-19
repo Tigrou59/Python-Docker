@@ -63,7 +63,7 @@ docker image build -t slim/python:3.7 .
     Successfully built 717c4c493d2f
     Successfully tagged slim/python:3.7
 
-*List the Docker images created with the cbuild command*
+*List the Docker images created with the build command*
 
  docker image ls
 
@@ -75,7 +75,7 @@ docker image build -t slim/python:3.7 .
 
 docker container run -it --rm --name my-python slim/python:3.7
 
-> For to keep data persistent, we will use a volume Docker mounted on the host and a specific workdir in the container
+> For to keep datas persistent, we will use a volume Docker mounted on the host and a specific workdir in the container
 
 docker container run -it --rm --name my-python -v "$PWD":/usr/src/myapp -w /usr/src/myapp slim/python:3.7
 
@@ -114,7 +114,7 @@ vi docker-compose.yml
     volumes:
       PythonVol:
 
-> We have added some option related with the interactive mode and a named volume for hold the datas persistants, we run the service directly, not in background >> (docker-compose up -d), but simply with the run option on the service
+> We have added some option related with the interactive mode and a named volume for hold the persistent datas, we run the service directly, not in background >> (docker-compose up -d), but simply with the run option on the service
 
 docker-compose run slim-python
 
@@ -146,7 +146,7 @@ docker volume inspect -f '{{.Mountpoint}}' compose_PythonVol
 
       /var/lib/docker/volumes/compose_PythonVol/_data
 
-> Testing the persistant data with a file "fibonacci.py"
+> Testing the persistent datas with a file "fibonacci.py"
 
 cp fibonacci.py /var/lib/docker/volumes/compose_PythonVol/_data/
 
@@ -158,7 +158,7 @@ docker-compose run slim-python
 
     1 2 3 5 8 13 21 34 55 89 144 233 377 610
 
-> For keep the persistant datas under the Docker volume, keep in mind that we must down the service with the command below (without the option -v, else this would delete the named volume)
+> For keep the persistent datas under the Docker volume, keep in mind that we must down the service with the command below (without the option -v, else this would delete the named volume)
 
 docker-compose down
 
@@ -196,4 +196,4 @@ docker-compose run slim-python
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
 
-> we can observate that the command don't re-create the volume because it's already exist and store the persistant datas
+> we can observate that the command don't re-create the volume because it's already exist and store the persistent datas
