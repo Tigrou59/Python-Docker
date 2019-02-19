@@ -183,3 +183,17 @@ docker-compose ps
 docker container ls -a
 
     CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+**For completing our use case with "Docker Compose for create a service Python 3.7"**
+
+> Now, for completed our use case, We can restart the service Docker with command :
+
+docker-compose run slim-python
+
+    Creating network "compose_default" with the default driver
+    Python 3.7.2 (default, Feb 13 2019, 10:47:41)
+    [GCC 6.3.0 20170516] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>>
+
+> we can observate that the command don't re-create the volume because it's already exist and store the persistant datas
