@@ -75,7 +75,7 @@ docker image build -t slim/python:3.7 .
 
 docker container run -it --rm --name my-python slim/python:3.7
 
-> For to keep data persistent, we will use a volume Docker mounted on the host and a specific workdir in the container*
+> For to keep data persistent, we will use a volume Docker mounted on the host and a specific workdir in the container
 
 docker container run -it --rm --name my-python -v "$PWD":/usr/src/myapp -w /usr/src/myapp slim/python:3.7
 
@@ -169,11 +169,7 @@ docker-compose down
 
 *I list only the directory inspected above with the command "docker volume inspect"*
 
-    ll `docker volume inspect -f {{'.Mountpoint'}} compose_PythonVol`
-    total 12
-    drwxr-xr-x 2 root root 4096 févr. 17 22:03 ./
-    drwxr-xr-x 3 root root 4096 févr. 17 21:53 ../
-    -rwxr-xr-x 1 root root  158 févr. 17 22:03 fibonacci.py*
+ll $(docker volume inspect -f {{'.Mountpoint'}} compose_PythonVol)
 
 > Datas are always present under the volume Docker even the service is deleted
 
