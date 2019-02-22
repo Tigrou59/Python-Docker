@@ -112,6 +112,7 @@ vi docker-compose.yml
       slim-python:
         image: slim/python:3.7
         container_name: python-37
+        restart: unless-stopped
         working_dir: /usr/src/myapp
         stdin_open: true
         tty: true
