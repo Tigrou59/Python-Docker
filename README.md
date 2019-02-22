@@ -4,7 +4,12 @@
 
 **Advantage :**
 
-> You don't need to use binaries for install your new virtual environment Python, any images and versions for Python are available under GitHub.  
+> To create a Python virtual environment, several recommended tools exist like Pew, Venv and Pipenv...  
+
+But you will have to use binaries to install and configure them.
+If you want to install and use with more agility as many virtual environments and different versions of Python then Docker is a serious alternative.  
+
+You don't need to use binaries for install your new virtual environment Python, any images and versions for Python are available under GitHub.  
 
 > Create or delete a new virtual environment with Docker is really very quickly to do...
 
