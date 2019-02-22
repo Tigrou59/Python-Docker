@@ -5,6 +5,8 @@
 **Advantage :**
 
 > To create a Python virtual environment, several recommended tools exist like Pew, Venv and Pipenv...  
+Take a look:
+https://towardsdatascience.com/python-virtual-environments-made-easy-fe0c603fe601
 
 But you will have to use binaries to install and configure them.
 If you want to install and use with more agility as many virtual environments and different versions of Python then Docker is a serious alternative.  
