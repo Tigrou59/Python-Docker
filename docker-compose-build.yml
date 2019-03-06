@@ -1,8 +1,9 @@
 version: '3.7'
 services:
   slim-python:
-    image: slim/python:3.7
-    container_name: python-37
+    container_name: python-3
+    build: .
+    image: slim/python:latest
     restart: unless-stopped
     working_dir: /usr/src/myapp
     stdin_open: true
@@ -11,5 +12,4 @@ services:
     volumes:
       - PythonVol:/usr/src/myapp
 volumes:
-PythonVol:
-  
+  PythonVol:
